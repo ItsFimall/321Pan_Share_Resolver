@@ -18,15 +18,17 @@ jobs:
         with:
           node-version: 18  # Specify the version of Node.js
 
+      - name: Install pnpm
+        run: npm install -g pnpm  # Install pnpm globally
+
       - name: Install dependencies
-        run: pnpm install  # Or 'npm install' if you're using npm
+        run: pnpm install  # Install the dependencies using pnpm
 
       - name: Build the project
-        run: pnpm run build  # Adjust if your build script is different
+        run: pnpm run build  # Build the project
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist  # The folder where your build outputs
-
