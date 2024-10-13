@@ -27,6 +27,13 @@ const ShareKeyInput = forwardRef<HTMLDivElement, ShareKeyInputProps>(({
       return Promise.resolve()
     }
 
+    if (/^https?:\/\/www\.321pan\.com\/s\/[\w-]+$/.test(value)) {
+      const transformedValue = value.replace('www.321pan.com', 'www.123pan.com')
+      form.setFieldsValue({ shareKey: transformedValue })
+      onShareKeyChange(transformedValue)
+      return Promise.resolve()
+    }
+
     if (/^[\w-]+$/.test(value)) {
       return Promise.resolve()
     }
